@@ -1,11 +1,27 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import PageTabs from './PageTabs';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 
-class App extends React.Component {
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <PageTabs/>
+        <div>
+          <Route path="/" exact component={Page1} />
+          <Route path="/page2" component={Page2} />
+          <Route path="/page3" component={Page3} />
+        </div>
+      </BrowserRouter>
+    </div>
+  )
+}
+
+class AppOld extends React.Component {
   state = {
     view: 'page1'
   }
@@ -30,21 +46,13 @@ class App extends React.Component {
 
     switch (view) {
       case 'page1':
-        return (this.wrapPage(
-          <Page1 />
-        ));
+        return (this.wrapPage(<Page1 />));
       case 'page2':
-        return (this.wrapPage(
-          <Page2 />
-        ));
+        return (this.wrapPage(<Page2 />));
       case 'page3':
-        return (this.wrapPage(
-          <Page3 />
-        ));
+        return (this.wrapPage(<Page3 />));
       default:
-        return (this.wrapPage(
-          <h2>Invalid Tab, choose another</h2>
-        ));
+        return (this.wrapPage(<h2>Invalid Tab, choose another</h2>));
     }
 
   }
