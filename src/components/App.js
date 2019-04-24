@@ -5,6 +5,7 @@ import PageTabs from './PageTabs';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
+import VariablePage from "./VariablePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" exact component={Page1} />
           <Route path="/page2" component={Page2} />
           <Route path="/page3" component={Page3} />
+          <Route path="/page/:id" component={VariablePage} />
         </div>
       </BrowserRouter>
     </div>
